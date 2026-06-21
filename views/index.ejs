@@ -163,21 +163,12 @@ tr:hover{
 <body>
 
 <div class="container">
-
 <h1>🚗 Vehicle Management System</h1>
-
 <div class="top-bar">
 
-<a href="/add" class="add-btn">
-➕ Add Vehicle
-</a>
+<a href="/add" class="add-btn">➕ Add Vehicle</a>
 
-<form class="search-form">
-
-<input
-type="text"
-name="search"
-placeholder="Search Vehicle">
+<form class="search-form"><input type="text" name="search" placeholder="Search Vehicle">
 
 <select name="sort">
 <option value="">Sort By Price</option>
@@ -185,9 +176,7 @@ placeholder="Search Vehicle">
 <option value="desc">High → Low</option>
 </select>
 
-<button type="submit">
-Search
-</button>
+<button type="submit">Search</button>
 
 </form>
 
@@ -222,19 +211,13 @@ Search
 
 <div class="action-box">
 
-<a
-href="/vehicles/<%= vehicle._id %>/edit"
-class="edit-btn">
-✏ Edit
-</a>
+<a href="/vehicles/<%= vehicle._id %>/edit" class="edit-btn">✏ Edit </a>
 
 <form
 action="/vehicles/<%= vehicle._id %>?_method=DELETE"
 method="POST">
 
-<button class="delete-btn">
-🗑 Delete
-</button>
+<button class="delete-btn">🗑 Delete</button>
 
 </form>
 
@@ -254,4 +237,4 @@ method="POST">
 
 </body>
 </html>
-```
+
