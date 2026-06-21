@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Vehicle Management System</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#667eea,#764ba2);
+    min-height:100vh;
+    padding:40px;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    background:white;
+    border-radius:15px;
+    padding:30px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+h1{
+    text-align:center;
+    color:#333;
+    margin-bottom:25px;
+}
+
+.top-bar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:15px;
+    margin-bottom:20px;
+}
+
+.add-btn{
+    text-decoration:none;
+    background:#28a745;
+    color:white;
+    padding:12px 20px;
+    border-radius:8px;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.add-btn:hover{
+    background:#218838;
+}
+
+.search-form{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.search-form input,
+.search-form select{
+    padding:10px;
+    border:1px solid #ccc;
+    border-radius:8px;
+}
+
+.search-form button{
+    background:#667eea;
+    color:white;
+    border:none;
+    padding:10px 18px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.search-form button:hover{
+    background:#4d63db;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+    overflow:hidden;
+    border-radius:10px;
+}
+
+thead{
+    background:#667eea;
+    color:white;
+}
+
+th,td{
+    padding:14px;
+    text-align:center;
+}
+
+tr:nth-child(even){
+    background:#f4f4f4;
+}
+
+tr:hover{
+    background:#e8ebff;
+}
+
+.edit-btn{
+    text-decoration:none;
+    background:#ffc107;
+    color:black;
+    padding:8px 12px;
+    border-radius:6px;
+    margin-right:5px;
+    font-weight:bold;
+}
+
+.edit-btn:hover{
+    background:#e0a800;
+}
+
+.delete-btn{
+    background:#dc3545;
+    color:white;
+    border:none;
+    padding:8px 12px;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.delete-btn:hover{
+    background:#c82333;
+}
+
+.action-box{
+    display:flex;
+    justify-content:center;
+    gap:8px;
+}
+
+@media(max-width:768px){
+
+    .top-bar{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    table{
+        display:block;
+        overflow-x:auto;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🚗 Vehicle Management System</h1>
+
+<div class="top-bar">
+
+<a href="/add" class="add-btn">
+➕ Add Vehicle
+</a>
+
+<form class="search-form">
+
+<input
+type="text"
+name="search"
+placeholder="Search Vehicle">
+
+<select name="sort">
+<option value="">Sort By Price</option>
+<option value="asc">Low → High</option>
+<option value="desc">High → Low</option>
+</select>
+
+<button type="submit">
+Search
+</button>
+
+</form>
+
+</div>
+
+<table>
+
+<thead>
+<tr>
+<th>Vehicle Name</th>
+<th>Company</th>
+<th>Model</th>
+<th>Price</th>
+<th>Color</th>
+<th>Actions</th>
+</tr>
+</thead>
+
+<tbody>
+
+<% vehicles.forEach(vehicle => { %>
+
+<tr>
+
+<td><%= vehicle.vehicleName %></td>
+<td><%= vehicle.company %></td>
+<td><%= vehicle.model %></td>
+<td>₹<%= vehicle.price %></td>
+<td><%= vehicle.color %></td>
+
+<td>
+
+<div class="action-box">
+
+<a
+href="/vehicles/<%= vehicle._id %>/edit"
+class="edit-btn">
+✏ Edit
+</a>
+
+<form
+action="/vehicles/<%= vehicle._id %>?_method=DELETE"
+method="POST">
+
+<button class="delete-btn">
+🗑 Delete
+</button>
+
+</form>
+
+</div>
+
+</td>
+
+</tr>
+
+<% }) %>
+
+</tbody>
+
+</table>
+
+</div>
+
+</body>
+</html>
+```
